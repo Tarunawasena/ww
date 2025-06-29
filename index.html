@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teng Teng Zen.I - Manisnya Kenangan, Renyahnya Kebersamaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'brand-brown': '#8B4513', // Cokelat tua
+                        'brand-cream': '#F5F5DC', // Krem lembut
+                        'brand-gold': '#DAA520', // Emas
+                        'brand-dark': '#3a2e25',
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* (FIX) Aturan lebih kuat untuk mencegah scroll horizontal */
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        .hero-carousel-item {
+            transition: opacity 1.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(44, 165, 75, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(44, 165, 75, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(44, 165, 75, 0); }
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark font-sans">
+
+    <!-- Tombol WhatsApp -->
+    <a href="https://wa.me/+6287782396686?text=Halo,%20saya%20tertarik%20dengan%20produk%20Teng-Teng%20Anda." target="_blank" class="whatsapp-button bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </a>
+
+    <!-- Navbar -->
+    <nav class="bg-brand-brown text-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <a href="#home" class="flex items-center space-x-3">
+                <img src="assets/logo.PNG" alt="Logo Teng-Teng Zen.I" class="w-14 h-15 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/60x60/f5f5dc/3a2e25?text=Logo';">
+                <span class="text-2xl font-serif text-brand-gold">Teng Teng Zen.I</span>
+            </a>
+
+            <!-- Menu Navigasi Desktop -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#tentang" class="hover:text-brand-gold transition duration-300">Tentang Kami</a>
+                <a href="#produk" class="hover:text-brand-gold transition duration-300">Produk</a>
+                <a href="#kontak" class="bg-brand-gold text-brand-brown px-4 py-2 rounded-md hover:bg-opacity-90 transition duration-300">Pesan Sekarang</a>
+            </div>
+
+            <!-- Tombol Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-white" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Buka menu</span>
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile dengan z-index dan class untuk JS -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-brown bg-opacity-95 absolute w-full z-50">
+            <a href="#tentang" class="mobile-menu-link block text-center py-3 hover:bg-brand-gold hover:text-brand-brown transition duration-300">Tentang Kami</a>
+            <a href="#produk" class="mobile-menu-link block text-center py-3 hover:bg-brand-gold hover:text-brand-brown transition duration-300">Produk</a>
+            <a href="#kontak" class="mobile-menu-link block text-center py-4 bg-brand-gold text-brand-brown font-semibold">Pesan Sekarang</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative h-screen w-full overflow-hidden">
+        <div id="hero-carousel" class="w-full h-full">
+            <!-- Carousel Items -->
+            <div class="hero-carousel-item opacity-100"><img src="assets/tengteng8.jpg" class="w-full h-full object-cover" alt="Teng-Teng disajikan di piring" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/3a2e25/f5f5dc?text=Gambar+Produk+1';"></div>
+            <div class="hero-carousel-item opacity-0"><img src="assets/tengteng2.jpg" class="w-full h-full object-cover" alt="Tumpukan Teng-Teng" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/8B4513/f5f5dc?text=Gambar+Produk+2';"></div>
+            <div class="hero-carousel-item opacity-0"><img src="assets/tengteng3.jpg" class="w-full h-full object-cover" alt="Orang menikmati Teng-Teng" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/DAA520/3a2e25?text=Gambar+Produk+3';"></div>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
+            <div class="w-full max-w-3xl px-6">
+                <!-- Ukuran font disesuaikan untuk layar terkecil dan menggunakan break-all -->
+                <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl drop-shadow-lg mb-4 break-all">Manisnya Pas, Renyahnya Kebersamaan</h1>
+                <p class="text-lg md:text-xl mb-8 drop-shadow-md">Temukan kembali cita rasa klasik Teng Teng yang dibuat dengan resep warisan dan bahan-bahan pilihan terbaik.</p>
+                <a href="#kontak" class="bg-brand-gold text-brand-brown px-8 py-3 rounded-md font-semibold text-lg hover:bg-opacity-90 transform hover:scale-105 transition duration-300">Cicipi Sekarang</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <section id="tentang" class="py-16 md:py-24">
+            <div class="container mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-on-scroll">
+                    <img src="assets/tengteng6.jpg" alt="Proses pembuatan Teng-Teng" class="rounded-lg shadow-xl w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/ffffff?text=Gambar+Tentang+Kami';">
+                </div>
+                <div class="fade-in-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-brown mb-4">Cerita di Balik Setiap Gigitan</h2>
+                    <p class="mb-4 text-lg">
+                        "Teng Teng Zen.I" bukan sekadar camilan. Ini adalah warisan resep keluarga yang kami jaga keasliannya dari generasi ke generasi. Dibuat dari beras ketan pilihan dan gula karamel terbaik, setiap kepingnya menawarkan kerenyahan cita rasa yang sempurna dan rasa manis yang pas.
+                    </p>
+                    <p class="mb-6 text-lg">
+                        Kami percaya bahwa makanan yang terbaik berasal dari bahan pilihan yang berkualitas tinggi. Oleh karena itu, kami hanya menggunakan bahan alami tanpa tambahan pengawet, memastikan setiap gigitan tidak hanya lezat, tetapi juga sehat untuk anda dan keluarga.
+                    </p>
+                    
+                    <div class="my-8 space-y-4">
+                        <a href="https://maps.app.goo.gl/CDVdtrxsgtU13uSN8?g_st=aw" target="_blank" rel="noopener noreferrer" class="flex items-start text-lg group">
+                            <i class="fas fa-map-marker-alt text-brand-gold w-6 text-center mr-3 mt-1 flex-shrink-0"></i>
+                            <!-- (FIX) Menggunakan break-all untuk pemotongan kata yang lebih agresif -->
+                            <span class="group-hover:text-brand-gold transition duration-300 break-all">
+                                Kp Curwangi,RT.01/RW.06,Haurwangi,Kec.Haurwangi Kabupaten Cianjur,Jawa Barat 43283
+                            </span>
+                        </a>
+                        <div class="flex flex-col space-y-4 pt-2">
+                            <a href="https://www.instagram.com/tengtengzen.i?igsh=bDVkb2pnd2Nxbngw&utm_source=qr" target="_blank" rel="noopener noreferrer" class="flex items-center text-lg hover:text-brand-gold transition duration-300">
+                                <i class="fab fa-instagram text-brand-gold text-2xl w-6 text-center mr-3"></i>
+                                <span>@tengteng.zeni</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@tengtengzen.i?_t=ZS-8xK34QX4akk&_r=1" target="_blank" rel="noopener noreferrer" class="flex items-center text-lg hover:text-brand-gold transition duration-300">
+                                <i class="fab fa-tiktok text-brand-gold text-2xl w-6 text-center mr-3"></i>
+                                <span>@tengteng.zeni</span>
+                            </a>
+                        </div>
+                    </div>
+
+                     <div class="flex space-x-6 pt-4">
+                         <div class="text-center">
+                             <i class="fas fa-leaf text-3xl text-brand-gold"></i>
+                             <p class="mt-2 font-semibold">Bahan Alami</p>
+                         </div>
+                         <div class="text-center">
+                             <i class="fas fa-hand-holding-heart text-3xl text-brand-gold"></i>
+                             <p class="mt-2 font-semibold">Buatan Tangan</p>
+                         </div>
+                         <div class="text-center">
+                             <i class="fas fa-trophy text-3xl text-brand-gold"></i>
+                             <p class="mt-2 font-semibold">Kualitas Premium</p>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="produk" class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-brown mb-12 fade-in-on-scroll">Produk Kami</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-brand-cream p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 fade-in-on-scroll">
+                        <img src="assets/tengteng55.jpg" alt="Teng-Teng Original" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Produk+Original';">
+
+                    </div>
+                    <div class="bg-brand-cream p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 fade-in-on-scroll">
+                        <img src="assets/produk2.jpg" alt="Teng-Teng Wijen" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Produk+Wijen';">
+
+                    </div>
+                    <div class="bg-brand-cream p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 fade-in-on-scroll">
+                        <img src="assets/produk11.JPG" alt="Teng-Teng Jahe" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Produk+Jahe';">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="py-16 md:py-24 bg-brand-dark text-white">
+            <div class="container mx-auto px-6 lg:px-8 text-center fade-in-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-gold mb-4">Siap untuk Menikmati Kerenyahannya?</h2>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-300">Pesan sekarang juga dan hadirkan manisnya "Teng Teng Zen.I" ditengah kehangatan keluarga Anda. Hubungi kami melalui WhatsApp untuk pemesanan cepat.</p>
+                <a href="https://wa.me/+6287782396686?text=Halo,%20saya%20tertarik%20dengan%20produk%20Teng-Teng%20Anda." target="_blank" class="bg-green-500 text-white px-10 py-4 rounded-md font-semibold text-lg hover:bg-green-600 transform hover:scale-105 transition duration-300 inline-flex items-center space-x-3">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>Pesan via WhatsApp</span>
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-brand-brown text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; KKN 2025-Taru Nawasena.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Logika Carousel
+            const carouselContainer = document.getElementById('hero-carousel');
+            if (carouselContainer) {
+                const items = carouselContainer.querySelectorAll('.hero-carousel-item');
+                let currentIndex = 0;
+                const totalItems = items.length;
+
+                if (totalItems > 0) {
+                    setInterval(() => {
+                        items[currentIndex].classList.remove('opacity-100');
+                        items[currentIndex].classList.add('opacity-0');
+                        currentIndex = (currentIndex + 1) % totalItems;
+                        items[currentIndex].classList.remove('opacity-0');
+                        items[currentIndex].classList.add('opacity-100');
+                    }, 5000); // Ganti gambar setiap 5 detik
+                }
+            }
+
+            // Logika Animasi Scroll
+            const scrollElements = document.querySelectorAll('.fade-in-on-scroll');
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+            window.addEventListener('scroll', handleScrollAnimation);
+            handleScrollAnimation();
+            
+            // Logika Menu Mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const isExpanded = !mobileMenu.classList.contains('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', isExpanded);
+                });
+
+                // Tambahkan event listener untuk menutup menu saat link di-klik
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
